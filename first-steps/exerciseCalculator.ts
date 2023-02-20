@@ -8,6 +8,29 @@ interface Result {
   average: number;
 }
 
+interface Input {
+  hours: number[];
+  target: number;
+}
+
+const parse = (args: string[]): Input => {
+  const hours: number[] = [];
+
+  for (let i = 2; i < args.length; i++) {
+    if (isNaN(Number(args[i]))) {
+      throw new Error('Provided values are not numbers!');
+    }
+    if (i > 2) {
+      hours.push(Number(args[i]));
+    }
+  }
+
+  return {
+    hours,
+    target: Number(args[2]),
+  };
+};
+
 const calculateExercises = (hours: number[], target: number): Result => {
   const trainingDays: number = hours.reduce((acc, curr) => {
     return (curr ? 1 : 0) + acc;
@@ -44,4 +67,13 @@ const calculateExercises = (hours: number[], target: number): Result => {
   };
 };
 
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2));
+try {
+  const { hours, target } = parse(process.argv);
+  console.log(calculateExercises(hours, target));
+} catch (error: unknown) {
+  let errorMessage = 'Something happened';
+  if (error instanceof Error) {
+    errorMessage += ' Error: ' + error.message;
+  }
+  console.log(errorMessage);
+}
