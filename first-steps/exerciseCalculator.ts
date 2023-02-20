@@ -1,4 +1,4 @@
-interface Result {
+export interface Result {
   periodLength: number;
   trainingDays: number;
   success: boolean;
@@ -31,7 +31,7 @@ const parse = (args: string[]): Input => {
   };
 };
 
-const calculateExercises = (hours: number[], target: number): Result => {
+export const calculateExercises = (hours: number[], target: number): Result => {
   const trainingDays: number = hours.reduce((acc, curr) => {
     return (curr ? 1 : 0) + acc;
   }, 0);
