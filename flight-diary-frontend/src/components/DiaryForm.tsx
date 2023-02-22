@@ -20,8 +20,6 @@ const DiaryForm = ({
       comment,
     });
     setDate('');
-    setVisibility('');
-    setWeather('');
     setComment('');
   };
 
@@ -32,25 +30,67 @@ const DiaryForm = ({
         <div>
           date
           <input
-            type="text"
+            type="date"
             value={date}
             onChange={({ target }) => setDate(target.value)}
           />
         </div>
         <div>
-          visibility
+          visibility: great
           <input
-            type="text"
-            value={visibility}
-            onChange={({ target }) => setVisibility(target.value)}
+            type="radio"
+            onChange={() => setVisibility('great')}
+            name="visibility"
+          />
+          good
+          <input
+            type="radio"
+            onChange={() => setVisibility('good')}
+            name="visibility"
+          />
+          ok
+          <input
+            type="radio"
+            onChange={() => setVisibility('ok')}
+            name="visibility"
+          />
+          poor
+          <input
+            type="radio"
+            onChange={() => setVisibility('poor')}
+            name="visibility"
           />
         </div>
         <div>
-          weather
+          weather: sunny
           <input
-            type="text"
-            value={weather}
-            onChange={({ target }) => setWeather(target.value)}
+            type="radio"
+            onChange={() => setWeather('sunny')}
+            name="weather"
+          />
+          rainy
+          <input
+            type="radio"
+            onChange={() => setWeather('rainy')}
+            name="weather"
+          />
+          cloudy
+          <input
+            type="radio"
+            onChange={() => setWeather('cloudy')}
+            name="weather"
+          />
+          stormy
+          <input
+            type="radio"
+            onChange={() => setWeather('stormy')}
+            name="weather"
+          />
+          windy
+          <input
+            type="radio"
+            onChange={() => setWeather('windy')}
+            name="weather"
           />
         </div>
         <div>
