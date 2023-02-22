@@ -3,12 +3,12 @@ import { DiaryEntry, DiaryFormValues } from './types';
 
 const baseUrl = 'http://localhost:3000/api/diaries';
 
-export const getAll = () => {
-  return axios.get<DiaryEntry[]>(baseUrl).then(response => response.data);
+export const getAll = async () => {
+  const { data } = await axios.get<DiaryEntry[]>(baseUrl);
+  return data;
 };
 
-export const create = (object: DiaryFormValues) => {
-  return axios
-    .post<DiaryEntry>(baseUrl, object)
-    .then(response => response.data);
+export const create = async (object: DiaryFormValues) => {
+  const { data } = await axios.post<DiaryEntry>(baseUrl, object);
+  return data;
 };
